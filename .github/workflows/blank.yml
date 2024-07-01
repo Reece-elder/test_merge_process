@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Make changes to pull request
         run: date +%s > report.txt
@@ -25,6 +27,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
+          base: main
           commit-message: Setup Merge Request
           signoff: false
           branch: test
