@@ -16,5 +16,13 @@ jobs:
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
-      - name: create pull request
-        run: gh pr create -B main -H title --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Create PR
+        uses: poorva17/create-pr-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_BRANCH: test
+          BASE_BRANCH: main
