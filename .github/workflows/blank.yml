@@ -21,6 +21,6 @@ jobs:
           ref: main
           
       - name: create pull request
-        run: gh pr create -B main -H test --title 'Merge my stuff into other stuff' --body 'Created by Github action'
+        run: gh pr create -B main -H test --title 'Merge my stuff into other stufff' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
