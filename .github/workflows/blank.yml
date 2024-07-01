@@ -27,6 +27,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.PAT }}
           base: main
           commit-message: Setup Merge Request
           signoff: false
