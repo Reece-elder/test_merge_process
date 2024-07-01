@@ -13,16 +13,28 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  createPullRequest:
+
+  release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: google-github-actions/release-please-action@v4
         with:
-          ref: main
-          
-      - name: create pull request
-        run: gh pr create -B main -h test --title "Merge ${{ github.ref_name }} into develop" --body 'Created by Github action' || gh pr edit -B main -h test --title "Merge ${{ github.ref_name }} into develop" --body 'Created by Github action'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          package-name: release-please-action
+          target-branch: test
+          changelog-types: >
+            [
+              { "type": "build", "section": "Build System", "hidden": false },
+              { "type": "ci", "section": "Continuous Integration", "hidden": false },
+              { "type": "chore", "section": "Miscellaneous Chores", "hidden": false },
+              { "type": "docs", "section": "Documentation", "hidden": false },
+              { "type": "feat", "section": "Features", "hidden": false },
+              { "type": "fix", "section": "Bug Fixes", "hidden": false },
+              { "type": "perf", "section": "Performance Improvements", "hidden": false },
+              { "type": "refactor", "section": "Code Refactoring", "hidden": false },
+              { "type": "revert", "section": "Reverts", "hidden": false },
+              { "type": "style", "section": "Styles", "hidden": false },
+              { "type": "test", "section": "Tests", "hidden": false }
+            ]
 
           
