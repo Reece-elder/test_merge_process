@@ -19,10 +19,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-
-      - name: Create PR
-        uses: poorva17/create-pr-action@main
+          
+      - name: create pull request
+        run: gh pr create -B main -H test --title 'Merge my stuff into other stuff' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HEAD_BRANCH: test
-          BASE_BRANCH: main
