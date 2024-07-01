@@ -27,6 +27,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
+          base: main
           commit-message: Setup Merge Request
           signoff: false
           branch: test
